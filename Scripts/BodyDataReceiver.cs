@@ -13,9 +13,9 @@ using UnityEngine;
 // Receives the body data messages
 public class BodyDataReceiver : Singleton<BodyDataReceiver> {
 
-    private Dictionary<long, Vector3[]> _Bodies = new Dictionary<long, Vector3[]>();
+    private Dictionary<ulong, Vector3[]> _Bodies = new Dictionary<ulong, Vector3[]>();
 
-    public Dictionary<long, Vector3[]> GetData() {
+    public Dictionary<ulong, Vector3[]> GetData() {
         return _Bodies;
     }
 
@@ -27,7 +27,7 @@ public class BodyDataReceiver : Singleton<BodyDataReceiver> {
     // Called when reading in Kinect body data
     void UpdateBodyData(NetworkInMessage msg) {
         // Parse the message
-        long trackingID = msg.ReadInt64();
+        ulong trackingID = (ulong)msg.ReadInt64();
         Vector3 jointPos;
         Vector3[] jointPositions = new Vector3[25];
 

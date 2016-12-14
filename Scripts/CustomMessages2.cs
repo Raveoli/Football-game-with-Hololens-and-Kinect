@@ -1,5 +1,5 @@
-﻿/*
- * CustomMessages2.cs
+/*
+ * CustomMessages.cs
  *
  * Allows for sending body data as custom messages to the Hololens
  * Requires a SharingStage GameObject
@@ -94,7 +94,7 @@ public class CustomMessages2 : Singleton<CustomMessages2> {
             // Create an outgoing network message to contain all the info we want to send
             NetworkOutMessage msg = CreateMessage((byte)TestMessageID.BodyData);
 
-            msg.Write(trackingID);
+            msg.Write((long)trackingID);
 
             foreach (Vector3 jointPos in bodyData) {
                 AppendVector3(msg, jointPos);
